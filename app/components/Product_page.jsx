@@ -1,29 +1,33 @@
-
-"use client";
+"use client"
 import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import ProductLoading from "../[pid]/loading";
 
-type Product_pageProps = {
-    
-};
 
-async function Product_page() {
-    const params = useSearchParams();
-    const product_id = params.get("id");
-    let product
+const Product_page = () => {
+  const params = useSearchParams();
+  const product_id = params.get("id");
+  const[product, setProduct]=useState([])
+  const[loading, setLoading]=useState(false)
 
+  const fetchProduct = async () => {
+    setLoading(true)
     const response = await fetch(`/api/specific_product/${product_id}`);
     const data = await response.json();
 
-    if (Array.isArray(data)) {
-        product = data; // If data is an array, set the state directly
-      } else {
-        product = [data]; // If data is not an array, convert it to an array and set the state
-      }
-    
-    return <>
-        {product.map(p =>
+    setProduct(data)
+    setLoading(false)
+  };
+
+  useEffect(() => {
+    fetchProduct();
+  },[product_id]);
+
+  return (
+    <>
+      {loading && <ProductLoading />}
+      {product && !loading && product.map((p) => (
         <section
           className="grid sm:grid-cols-2 sm:gap-16 grid-cols-1 sm:gap-y-0 gap-y-12"
           key={p._id}
@@ -36,21 +40,17 @@ async function Product_page() {
             alt="Product_image"
           />
           <div className="flex flex-col items-start">
-            <p className="mt-4 font-semibold text-4xl">
-              {p.name}
-            </p>
-            <p className="mt-4 font-semibold text-xl">
-              Ksh.{p.price}
-            </p>
-            <p className="mt-4 text-base">
-              {p.description}
-            </p>
+            <p className="mt-4 font-semibold text-4xl">{p.name}</p>
+            <p className="mt-4 font-semibold text-xl">Ksh.{p.price}</p>
+            <p className="mt-4 text-base">{p.description}</p>
             <button className="px-3 py-2 rounded-lg bg-[#0077be] text-white w-[100px] mt-8">
               Buy Ticket
             </button>
           </div>
         </section>
-      )}
+      ))}
     </>
-}
+  );
+};
+
 export default Product_page;

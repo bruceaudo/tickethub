@@ -30,6 +30,6 @@
     ".next/types/**/*.ts",
     "utils/database.js",
     "app/api/new_product/imageUpload/route.js"
-  ],
+, "app/components/AddProduct.jsx", "app/components/All_products.jsx", "app/components/EditProduct.jsx", "app/components/Feed.jsx", "app/components/LoginModal.jsx", "app/components/Navbar.jsx", "app/components/Product_page.jsx", "app/components/SellDashboard.jsx", "app/layout.jsx", "app/providers.jsx"  ],
   "exclude": ["node_modules"]
 }

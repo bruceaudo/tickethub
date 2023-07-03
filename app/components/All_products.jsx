@@ -6,11 +6,8 @@ import Image from "next/image";
 import CardSkeleton from './CardSkeleton';
 import { useRouter } from 'next/navigation';
 
-type All_productsProps = {
-    
-};
 
-const All_products: React.FC<All_productsProps> = () => {
+const All_products = () => {
   const router = useRouter()
     const { data: session } = useSession();
     const[products, setProducts]=useState([])
@@ -27,7 +24,7 @@ const All_products: React.FC<All_productsProps> = () => {
     }
     
     getProducts()
-    },[])
+    },[session?.user?.id])
 
   
   
@@ -37,7 +34,7 @@ const All_products: React.FC<All_productsProps> = () => {
       <section className="sm:my-6 my-10 grid lg:grid-cols-3 lg:gap-20 md:grid-cols-2 md:gap-10 grid-cols-1 sm:gap-y-0 gap-y-[62px]">
        
         
-        {products?.length > 0 && !loading && products.map((product: object) => 
+        {products?.length > 0 && !loading && products.map((product) => 
         <div key={product._id} className="rounded-lg">
             <Image
               width={300}
@@ -63,7 +60,7 @@ const All_products: React.FC<All_productsProps> = () => {
         method: 'DELETE'
         })
         if (response.ok) {
-        const filteredProducts = products.filter((p: object) => p._id !== product._id)
+        const filteredProducts = products.filter((p) => p._id !== product._id)
         setProducts(filteredProducts)
       } else {
         alert("Failed to delete product. Try again.")

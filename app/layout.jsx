@@ -2,6 +2,8 @@
 import Navbar from "@/app/components/Navbar";
 import "./globals.css";
 import { NextAuthProvider } from "./providers";
+import { SideTrayContextProvider } from "@/contexts/SideTray";
+import MobileNav from "./components/MobileNav";
 
 export const metadata = {
   title: "Ticketbay: Buy & Sell Tickets",
@@ -10,19 +12,15 @@ export const metadata = {
 
 export default function RootLayout({
   children
-}: {
-  children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
+  return <html lang="en">
       <NextAuthProvider>
         <body>
-          
-            <Navbar />
+          <SideTrayContextProvider>
+          <Navbar />
             {children}
-          
+          </SideTrayContextProvider>
         </body>
       </NextAuthProvider>
-    </html>
-  );
+    </html>;
 }

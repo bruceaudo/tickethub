@@ -11,29 +11,34 @@ const handler = NextAuth({
     })
   ],
   callbacks: {
-    async session ({ session }) {
+    async session({ session }) {
+    try {
       const sessionUser = await User.findOne({ email: session.user.email })
 
-      session.user.id = sessionUser._id.toString()
-
+      if (sessionUser) {
+        session.user = { ...session.user, id: sessionUser._id.toString() }
+      }
       return session
-    },
-    async signIn({ profile })
-    {
-      try
-      {
+    } catch (error) {
+      console.log('There was an error retrieving user details:', error)
+    }
+  },
+    async signIn ({ profile }) {
+      try {
         await connectToDb()
-        //Check if user already exists
+
+        // Check if user already exists
         const userExists = await User.findOne({ email: profile.email })
 
-        //If not, create a new user
+        // If not, create a new user
         if (!userExists) {
           await User.create({
             email: profile.email,
             fullname: profile.name,
-            image: profile.picture,
+            image: profile.picture
           })
         }
+
         return true
       } catch (error) {
         console.log('There was an error signing in user:', error)

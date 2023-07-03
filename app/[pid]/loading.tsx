@@ -4,7 +4,7 @@ type loadingProps = {
     
 };
 
-const loading:React.FC<loadingProps> = () => {
+const ProductLoading:React.FC<loadingProps> = () => {
     
     return <section className="grid sm:grid-cols-2 sm:gap-16 grid-cols-1 sm:gap-y-0 gap-y-12 mt-[80px] sm:mt-[80px]">
         <div className="rounded-lg h-[450px] sm:w-[350px] w-full bg-gray-200 skeleton" />
@@ -16,4 +16,4 @@ const loading:React.FC<loadingProps> = () => {
         </div>
       </section>;
 }
-export default loading;
+export default ProductLoading;

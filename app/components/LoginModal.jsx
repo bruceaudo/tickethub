@@ -2,11 +2,8 @@ import React, { Dispatch, SetStateAction } from "react";
 import { signIn, signOut, getProviders } from "next-auth/react";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 
-type LoginModalProps = {
-  setIsLoggedIn: Dispatch<SetStateAction<boolean>>;
-};
 
-const LoginModal: React.FC<LoginModalProps> = ({setIsLoggedIn}) => {
+const LoginModal = ({setIsLoggedIn}) => {
     
 
     const [providers, setProviders] = React.useState(null);
@@ -24,7 +21,7 @@ const LoginModal: React.FC<LoginModalProps> = ({setIsLoggedIn}) => {
         <div className="modal h-[220px] w-[65%] md:h-[210px] md:w-[45%] lg:h-[200px] lg:w-[300px] rounded-lg flex flex-col items-center justify-start text-center p-5">
           
           <p className="mt-7 font-semibold text-base">
-            Please login to continue. Or, if you don't have an account, sign
+            Please login to continue. Or, if you don&apos;t have an account, sign
             up.
           </p>
           {providers && Object.values(providers).map(provider =>
