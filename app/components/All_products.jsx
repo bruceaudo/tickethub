@@ -35,7 +35,7 @@ const All_products = () => {
        
         
         {products?.length > 0 && !loading && products.map((product) => 
-        <div key={product._id} className="rounded-lg">
+        <div key={product._id} className="rounded-sm">
             <Image
               width={300}
               height={450}

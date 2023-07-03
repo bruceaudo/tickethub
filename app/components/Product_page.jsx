@@ -33,13 +33,13 @@ const Product_page = () => {
       {loading && <ProductLoading />}
       {product && !loading && product.map((p) => (
         <section
-          className="grid sm:grid-cols-2 sm:gap-16 grid-cols-1 sm:gap-y-0 gap-y-12"
+          className="grid sm:grid-cols-[_2fr_3fr] sm:gap-20 grid-cols-1 sm:gap-y-0 gap-y-12"
           key={p._id}
         >
           <Image
-            className="rounded-lg h-[450px] sm:w-[350px] w-full"
-            width={350}
-            height={450}
+            className="rounded-sm h-[480px] w-full object-cover"
+            width={450}
+            height={480}
             src={p.imageURL}
             alt="Product_image"
           />
