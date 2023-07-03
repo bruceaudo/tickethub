@@ -6,7 +6,7 @@ import { SideTrayContextProvider } from "@/contexts/SideTray";
 import MobileNav from "./components/MobileNav";
 
 export const metadata = {
-  title: "Ticketbay: Buy & Sell Tickets",
+  title: "Tickethub: Buy & Sell Tickets",
   description: "Created with love by Bruce Audo"
 };
 
