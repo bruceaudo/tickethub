@@ -2,26 +2,130 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+body {
+  @apply mx-[16px] md:mx-[64px] lg:mx-[96px];
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+nav {
+  @apply -mx-[16px] md:-mx-[64px] lg:-mx-[96px] px-[16px] md:px-[64px] lg:px-[96px];
+}
+
+.icon {
+  @apply w-[24px] h-[24px];
+}
+
+.hero--title {
+  @apply text-[48px] md:text-[55px] lg:text-[100px] font-bold;
+}
+
+.hero--description {
+  @apply text-[16px] md:text-[18px] lg:text-[20px];
+}
+
+.text-gradient--three {
+  background: hsla(33, 100%, 53%, 1);
+
+  background: linear-gradient(
+    90deg,
+    hsla(33, 100%, 53%, 1) 0%,
+    hsla(58, 100%, 68%, 1) 100%
+  );
+
+  background: -moz-linear-gradient(
+    90deg,
+    hsla(33, 100%, 53%, 1) 0%,
+    hsla(58, 100%, 68%, 1) 100%
+  );
+
+  background: -webkit-linear-gradient(
+    90deg,
+    hsla(33, 100%, 53%, 1) 0%,
+    hsla(58, 100%, 68%, 1) 100%
+  );
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#0077ce", endColorstr="#0077be", GradientType=1 );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.gradient--three {
+  background: hsla(33, 100%, 53%, 1);
+
+  background: linear-gradient(
+    90deg,
+    hsla(33, 100%, 53%, 1) 0%,
+    hsla(58, 100%, 68%, 1) 100%
+  );
+
+  background: -moz-linear-gradient(
+    90deg,
+    hsla(33, 100%, 53%, 1) 0%,
+    hsla(58, 100%, 68%, 1) 100%
+  );
+
+  background: -webkit-linear-gradient(
+    90deg,
+    hsla(33, 100%, 53%, 1) 0%,
+    hsla(58, 100%, 68%, 1) 100%
+  );
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FF930F", endColorstr="#FFF95B", GradientType=1 );
+}
+
+.menu-transition{
+  transition: transform 0.5s ease-in-out;
+}
+
+.form-label{
+  @apply text-sm text-gray-500
+}
+
+.overlay{
+  position: fixed;
+  top:0;
+  bottom:0;
+  right:0;
+  left:0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 60;
+}
+
+.modal{
+  position: fixed;
+  background-color: white;
+  z-index: 70;
+  left: 50%;
+  top:50%;
+  transform: translate(-50%, -50%);
+}
+
+button{
+  @apply shadow-lg
+}
+
+button[disabled]{
+  @apply opacity-75
+}
+
+body{
+  color: #333333;
+}
+
+.skeleton {
+  animation: loading 1s infinite linear;
+}
+
+@keyframes loading {
+  0% {
+    opacity: 0.5; /* Set the initial opacity value */
+  }
+  50% {
+    opacity: .9; /* Set the mid-stage opacity value */
+  }
+  100% {
+    opacity: 0.5; /* Set the final opacity value */
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+
