@@ -33,11 +33,11 @@ const Product_page = () => {
       {loading && <ProductLoading />}
       {product && !loading && product.map((p) => (
         <section
-          className="grid sm:grid-cols-[_2fr_3fr] sm:gap-20 grid-cols-1 sm:gap-y-0 gap-y-12"
+          className="grid lg:grid-cols-[_2fr_3fr] sm:grid-cols-[_2fr_2fr] lg:gap-20 sm:gap-10 grid-cols-1 sm:gap-y-0 gap-y-12"
           key={p._id}
         >
           <Image
-            className="rounded-sm h-[480px] w-full object-cover"
+            className="rounded-sm h-[480px] lg:h-[480px] sm:h-[450px] w-full object-cover"
             width={450}
             height={480}
             src={p.imageURL}
@@ -47,7 +47,7 @@ const Product_page = () => {
             <p className="mt-4 font-semibold text-4xl">{p.name}</p>
             <p className="mt-4 font-semibold text-xl">Ksh.{p.price}</p>
             <p className="mt-4 text-base">{p.description}</p>
-            <button className="px-3 py-2 rounded-lg bg-[#0077be] text-white w-[100px] mt-8">
+            <button className="px-3 py-2 h-[40px] rounded-lg bg-[#0077be] text-white w-[150px] mt-8">
               Buy Ticket
             </button>
           </div>

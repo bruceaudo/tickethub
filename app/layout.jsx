@@ -3,7 +3,6 @@ import Navbar from "@/app/components/Navbar";
 import "./globals.css";
 import { NextAuthProvider } from "./providers";
 import { SideTrayContextProvider } from "@/contexts/SideTray";
-import MobileNav from "./components/MobileNav";
 
 export const metadata = {
   title: "Tickethub: Buy & Sell Tickets",
@@ -14,6 +13,9 @@ export default function RootLayout({
   children
 }) {
   return <html lang="en">
+    <head>
+      <link rel="icon" href="/favicon.ico" />
+    </head>
       <NextAuthProvider>
         <body>
           <SideTrayContextProvider>
