@@ -11,17 +11,21 @@ const Product_page = () => {
   const[product, setProduct]=useState([])
   const[loading, setLoading]=useState(false)
 
-  const fetchProduct = async () => {
-    setLoading(true)
-    const response = await fetch(`/api/specific_product/${product_id}`);
-    const data = await response.json();
+  
 
-    setProduct(data)
-    setLoading(false)
-  };
+  useEffect(() =>
+  {
+    const fetchProduct = async () => {
+      setLoading(true);
+      const response = await fetch(`/api/specific_product/${product_id}`);
+      const data = await response.json();
 
-  useEffect(() => {
+      setProduct(data);
+      setLoading(false);
+    };
+
     fetchProduct();
+    
   },[product_id]);
 
   return (
